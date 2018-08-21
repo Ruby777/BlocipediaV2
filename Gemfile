@@ -78,3 +78,6 @@ gem 'bootstrap-sass'
 
 #User authenitcation with Devise
 gem 'devise'
+
+#Adding Figaro for sensitive data handling
+gem 'figaro', '1.0'
