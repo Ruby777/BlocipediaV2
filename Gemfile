@@ -75,3 +75,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #Framework for CSS styling
 gem 'bootstrap-sass'
+
+#User authenitcation with Devise
+gem 'devise'
+
+#Adding Figaro for sensitive data handling
+gem 'figaro', '1.0'
