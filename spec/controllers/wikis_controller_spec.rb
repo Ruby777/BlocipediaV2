@@ -1,7 +1,8 @@
 require 'rails_helper'
+require 'spec_helper'
 
 RSpec.describe WikisController, type: :controller do
-
+ 
   let (:my_wiki) { Wiki.create!(title: "New Wiki Title", body: "New Wiki Body") }
 
   describe "GET #index" do
@@ -36,5 +37,4 @@ RSpec.describe WikisController, type: :controller do
       expect(response).to have_http_status(:success)
     end
   end
-
 end
