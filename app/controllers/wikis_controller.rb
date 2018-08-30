@@ -15,13 +15,14 @@ class WikisController < ApplicationController
     @wiki = Wiki.new
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
+    @wiki.user = current_user
 
     if @wiki.save
       flash[:notice] = "Wiki was saved!"
       redirect_to @wiki
 
     else
-      
+      puts @user.errors.full_messages
       flash.now[:alert] = "There was an error saving the wiki. Please try again."
       render :new
     end

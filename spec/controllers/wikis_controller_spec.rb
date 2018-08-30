@@ -3,7 +3,7 @@ require 'spec_helper'
 
 RSpec.describe WikisController, type: :controller do
   let(:user) { FactoryGirl.create(:user) }
-  let(:my_wiki) { Wiki.create!(title: "New Wiki Title", body: "New Wiki Body", user: user) }
+  let(:my_wiki) Wiki.create!(title: "New Wiki Title", body: "New Wiki Body", user: user) }
 
   before do
     user.confirm
@@ -62,7 +62,7 @@ RSpec.describe WikisController, type: :controller do
    end
 
     it "assigns the new wiki to @wiki" do
-      wiki :create, params: { wiki: { title: "New Wiki Title", body: "New Wiki Body"} }
+      wiki :create, params: { wiki: { title: "New Wiki Title", body: "New Wiki Body" } }
       expect(assigns(:wiki)).to eq Wiki.last
     end
 
