@@ -46,7 +46,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'rails-controller-testing'
   gem 'shoulda'
-  gem 'factory_girl_rails','~> 4.0'
+  gem 'factory_bot_rails'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
@@ -82,3 +82,6 @@ gem 'devise'
 
 #Adding Figaro for sensitive data handling
 gem 'figaro', '1.0'
+
+#User Authorization with Pundit
+gem "pundit"

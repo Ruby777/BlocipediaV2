@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'spec_helper'
 
 RSpec.describe WikisController, type: :controller do
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { FactoryBot.create(:user) }
   let(:my_wiki) { Wiki.create!(title: "New Wiki Title", body: "New Wiki Body", user: user) }
 
   before do
