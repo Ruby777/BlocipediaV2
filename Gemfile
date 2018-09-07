@@ -85,3 +85,6 @@ gem 'figaro', '1.0'
 
 #User Authorization with Pundit
 gem "pundit"
+
+#Seeding Data with Faker
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
