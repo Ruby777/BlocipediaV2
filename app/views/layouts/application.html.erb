@@ -50,6 +50,9 @@
       
       <%= yield %>
     </div>
-    
+    <script type ="text/javascript" src="https://js.stripe.com/v3/"></script>
+    <script type="text/javascript">
+        Stripe.setPublishableKey('pk_test_xxxxxxxxxxx');
+    </script>
   </body>
 </html>
