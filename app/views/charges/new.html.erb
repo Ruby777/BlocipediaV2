@@ -6,3 +6,16 @@
     data-amount="<%= @stripe_btn_data[:amount] %>" 
     data-description="<%= @stripe_btn_data[:description] %>" ></script>
 <% end %>
+
+  <script>
+      var handler = StripeCheckout.configure({
+        key: '<%= Rails.configuration.stripe[:publishable_key] %>',
+        locale: 'auto',
+        name: 'Blocipedia',
+        description: 'Upgrade',
+        token: function(token) {
+            $('input#stripeToken').val(token.id);
+            $('form').submit();
+        }
+      });
+   </script>

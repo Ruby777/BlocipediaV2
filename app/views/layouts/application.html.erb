@@ -20,7 +20,7 @@
 
      
       <% if user_signed_in? %>
-        Signed in as <strong><%= current_user.email %></strong> |
+        Signed in as <strong><%= current_user.email %></strong> | <%= current_user.role %> member |
         <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link'%> - <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'navbar-link' %>
       <% else %>
 
@@ -28,6 +28,14 @@
         <%= link_to "Sign In", new_user_session_path, :class => 'navbar-link' %>
       <% end %>
       
+      <% if current_user.standard?  %>
+        <p class="pull-right"><%= link_to "Upgrade My Membership", new_charge_path %></p>
+      <% end %>
+
+      <% if current_user.premium? %>
+        <p class="pull-right"><%= link_to "Downgrade My Membership", downgrade_path, method: :downgrade %></p>
+      <% end %>
+
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
 
@@ -50,9 +58,5 @@
       
       <%= yield %>
     </div>
-    <script type ="text/javascript" src="https://js.stripe.com/v3/"></script>
-    <script type="text/javascript">
-        Stripe.setPublishableKey('pk_test_xxxxxxxxxxx');
-    </script>
   </body>
 </html>

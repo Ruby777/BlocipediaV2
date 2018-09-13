@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   
   resources :wikis
-
+  
   resources :charges, only: [:new, :create]
+
+  post 'charges/downgrade' => "charges#downgrade", :as => "downgrade"
 
   devise_for :users
  

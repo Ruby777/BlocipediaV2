@@ -1,12 +1,5 @@
 class ChargesController < ApplicationController
-    def new 
-        @stripe_btn_data = {
-            key: "#{ Rails.configuration.stripe[:publishable_key] }",
-            description: "Premium Membership - #{current_user.email}",
-            amount: 10_00
-        }
-    end
-
+   
     def create
         #Creates a Stripe Customer object, for associating with the charge
         customer = Stripe::Customer.create(
@@ -17,17 +10,36 @@ class ChargesController < ApplicationController
         #The charge action
         charge = Stripe::Charge.create(
             customer: customer.id,
-            amount: 10_00,
+            amount: 15_00,
             description: "Premium Membership - #{current_user.email}",
             currency: 'usd'
         )
 
-        flash[:notice] = "Thank you for your purchase, #{current_user.email}! Please come again."
-        redirect_to user_path(current_user)
+        current_user.role = 'premium'
+        current_user.save
+
+        flash[:notice] = "Thank you for your purchase, #{current_user.email}! You are now a #{current_user.role} member!"
+        redirect_to root_path
 
         # Rescue block to catch any errors
         rescue Stripe::CardError => e 
             flash[:alert] = e.message
             redirect_to new_charge_path
+    end
+
+    def new 
+        @stripe_btn_data = {
+            key: "#{ Rails.configuration.stripe[:publishable_key] }",
+            description: "Premium Membership - #{current_user.email}",
+            amount: 15_00
+        }
+    end
+
+    def downgrade
+        current_user.role = 'standard'
+        current_user.save
+
+        flash[:notice] = "#{current_user.email} you have successfully changed your membership to #{current_user.role} member!"
+        redirect_to root_path
     end
 end
