@@ -34,12 +34,4 @@ class ChargesController < ApplicationController
             amount: 15_00
         }
     end
-
-    def downgrade
-        current_user.role = 'standard'
-        current_user.save
-
-        flash[:notice] = "#{current_user.email} you have successfully changed your membership to #{current_user.role} member!"
-        redirect_to root_path
-    end
 end

@@ -28,12 +28,12 @@
         <%= link_to "Sign In", new_user_session_path, :class => 'navbar-link' %>
       <% end %>
       
-      <% if current_user.standard?  %>
+      <% if user_signed_in? && current_user.role == "standard"  %>
         <p class="pull-right"><%= link_to "Upgrade My Membership", new_charge_path %></p>
       <% end %>
 
-      <% if current_user.premium? %>
-        <p class="pull-right"><%= link_to "Downgrade My Membership", downgrade_path, method: :downgrade %></p>
+      <% if user_signed_in? && current_user.role == "premium"  %>
+        <p class="pull-right"><%= link_to "Downgrade My Membership", downgrade_path, method: :downgrade, data: { confirm: 'Please note that all your private Wikis will be changed to public. Are you sure you want to downgrade your membership?' } %></p>
       <% end %>
 
       <p class="notice"><%= notice %></p>

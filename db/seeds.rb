@@ -19,7 +19,21 @@ users = User.all
 end
 wikis = Wiki.all
 
+ admin = User.create!(
+    email:    'admin@example.com',
+    password: 'helloworld',
+    role:     'admin'
+)
 
+ standard = User.create!(
+    email:    'standard@example.com',
+    password: 'helloworld'
+)
+ premium = User.create!(
+     email:    'premium@example.com',
+     password: 'helloworld',
+     role:     'premium'
+ )
 
 
 puts "Seed Finished"

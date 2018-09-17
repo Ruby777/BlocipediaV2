@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   resources :charges, only: [:new, :create]
 
-  post 'charges/downgrade' => "charges#downgrade", :as => "downgrade"
+  post 'application/downgrade' => "application#downgrade", :as => "downgrade"
 
   devise_for :users
  
