@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   post 'application/downgrade' => "application#downgrade", :as => "downgrade"
 
+  resources :collaborators
+  
   devise_for :users
  
   get 'about' => 'welcome#about'

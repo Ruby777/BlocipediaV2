@@ -1,7 +1,6 @@
 class WikisController < ApplicationController
   def index
-    @wikis = Wiki.visible_to(current_user)
-    
+    @wikis = policy_scope(Wiki)
   end
 
   def show
@@ -41,13 +40,13 @@ class WikisController < ApplicationController
     @wiki.private = params[:wiki][:private]
   
 
-      if @wiki.save
-        flash[:notice] = "Wiki was updated"
-        redirect_to @wiki
-      else
-        flash.now[:alert] = "There was an error updating the wiki. Please try again."
-        render :edit
-      end
+    if @wiki.save
+      flash[:notice] = "Wiki was updated"
+      redirect_to @wiki
+    else
+      flash.now[:alert] = "There was an error updating the wiki. Please try again."
+      render :edit
+    end
   end
 
   def destroy
