@@ -1,3 +1,4 @@
 class Collaborator < ApplicationRecord
-    has_many :wikis
+    belongs_to :user
+    belongs_to :wiki
 end
