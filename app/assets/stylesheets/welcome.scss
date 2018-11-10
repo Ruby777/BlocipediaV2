@@ -1,3 +1,28 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body{
+    background: {
+        image: asset_url("qi-li-449094-unsplash.jpg");
+    }
+    background-size:cover;
+
+    * {
+        color: #fff;
+    }
+    
+    a {
+        color: turquoise;
+    }
+    
+ .testrun{
+    float: right;
+    font-size: 14px;
+    margin: 50px;
+    font-weight: bolder;
+    text-shadow: 1px 1px black;
+    padding: 10px;
+    width: 450px;
+    height: 200px;
+  }
+}

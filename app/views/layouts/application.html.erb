@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BlocipediaV2</title>
+    <title>Gallivant</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -13,7 +13,7 @@
   <body>
     <div class="container">
       <ul class="nav nav-tabs">
-        <li><%= link_to "Blocipedia", root_path %></li>
+        <li><%= link_to "Gallivant", root_path %></li>
         <li><%= link_to "About", about_path %></li>
         <li><%= link_to "Wikis", wikis_path %></li>
       </ul>
@@ -26,6 +26,29 @@
 
         <%= link_to "Sign Up", new_user_registration_path, :class => 'navbar-link' %> -
         <%= link_to "Sign In", new_user_session_path, :class => 'navbar-link' %>
+      
+
+        <div class= "testrun">
+          <p> Hi, Welcome to Gallivant - a resource for sharing and collaborating on Wikis about the many Wonders of the World! </p>
+
+          <p> To take this App for a test run, use these credentials for logging in; </p>
+          
+          <br />
+
+              <p>Email: janedoe@example.com</p>
+              <p>Password: helloworld </p>
+
+          <br />
+          <p> ....and these for upgrading the account to Premium</p>
+
+          <br />
+              <p>Email: janedoe@example.com</p>
+              <p>Card No.: 4242 4242 4242 4242</p>
+              <p>Expiry: 04/21 </p>
+
+          <br />
+          <p>Happy test run!</p>
+        </div>
       <% end %>
       
       <% if user_signed_in? && current_user.role == "standard"  %>
@@ -35,6 +58,7 @@
       <% if user_signed_in? && current_user.role == "premium"  %>
         <p class="pull-right"><%= link_to "Downgrade My Membership", downgrade_path, method: :downgrade, data: { confirm: 'Please note that all your private Wikis will be changed to public. Are you sure you want to downgrade your membership?' } %></p>
       <% end %>
+
 
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
