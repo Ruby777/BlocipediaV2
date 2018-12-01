@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_many :wikis, dependent: :destroy
 
+  has_many :collaborators
+
   after_initialize { self.role ||= :standard }
   
   # Include default devise modules. Others available are:

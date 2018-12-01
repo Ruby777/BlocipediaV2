@@ -1,0 +1,12 @@
+Collaborators:
+
+<ul>
+  <% @wiki.collaborators.each do |collaborator| %>
+        <li>
+            <%= User.find_by_id(collaborator.user_id).email %>
+            </br>
+            <%= link_to "Delete Collaborator", [@wiki, collaborator], class: 'btn btn-danger delete', method: :delete, data: {confirm: 'Are you sure you want to delete this collaborator?'} %>
+            </br>   
+        </li>
+  <% end %>
+</ul>

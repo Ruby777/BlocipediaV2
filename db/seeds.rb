@@ -19,7 +19,7 @@ users = User.all
 end
 wikis = Wiki.all
 
- admin = User.create!(
+admin = User.create!(
     email:    'admin@example.com',
     password: 'helloworld',
     role:     'admin'
